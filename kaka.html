@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Father's Day</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+}
+
+button{
+    padding:15px 30px;
+    font-size:22px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none;
+}
+
+h1{
+    font-size:50px;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #fff;
+    }
+    to{
+        text-shadow:0 0 30px #38bdf8;
+    }
+}
+
+.message{
+    animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="start">
+<button onclick="showSurprise()">
+🎉 Open Your Surprise 🎉
+</button>
+</div>
+
+<div id="surprise" class="hidden message">
+<h1>Happy Father's Day ❤️</h1>
+
+<h2>To The Best Dad</h2>
+
+<p>
+Thank you for always supporting me,
+guiding me and taking care of our family.
+</p>
+
+<h2>Love You Dad ❤️</h2>
+
+<h3>- Shreehan</h3>
+</div>
+
+</div>
+
+<script>
+
+function showSurprise(){
+
+document.getElementById("start").style.display="none";
+document.getElementById("surprise").classList.remove("hidden");
+
+var duration = 5000;
+var end = Date.now() + duration;
+
+(function frame() {
+confetti({
+particleCount: 5,
+angle: 60,
+spread: 55,
+origin: { x: 0 }
+});
+
+confetti({
+particleCount: 5,
+angle: 120,
+spread: 55,
+origin: { x: 1 }
+});
+
+if (Date.now() < end) {
+requestAnimationFrame(frame);
+}
+})();
+}
+</script>
+
+</body>
+</html>
